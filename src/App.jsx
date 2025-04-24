@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import FavoritePage from "./FavoritePage.jsx";
+import HomePage from "./HomePage";
+import Navbar from "./Navbar.jsx";
 
 function App() {
   const url = "https://randomuser.me/api/?results=5";
-  const [users,setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  const getUsers = async ()=>{
-      const request = await fetch(url);
-      const data = await request.json();
-      setUsers(data.results);
-  }
+  const getUsers = async () => {
+    const request = await fetch(url);
+    const data = await request.json();
+    setUsers(data.results);
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getUsers();
-  },[])
-
+  }, []);
 
   return (
-    <>
-      <h1>React users</h1>
-      <ul>
-      {users
-      .sort((u1,u2)=>u1.name.last.localeCompare(u2.name.last))
-      .map((u,index)=>
-        <li key={index}>{u.name.last} {u.name.first} - {u.phone} <span className="star" onClick={(e)=>e.target.classList.toggle("active")} > &#9734; </span></li>
-      )}
-      </ul>
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage users={users} />} />
+        <Route path="/favorites" element={<FavoritePage users={users} />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

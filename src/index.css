@@ -80,3 +80,11 @@ li {
   cursor: pointer;
   color: yellow;
 }
+
+.active {
+  color: yellow;
+}
+
+.star.active:hover {
+  color: white;
+}

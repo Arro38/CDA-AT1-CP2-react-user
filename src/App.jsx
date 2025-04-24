@@ -14,6 +14,7 @@ function App() {
     getUsers();
   },[])
 
+
   return (
     <>
       <h1>React users</h1>
@@ -21,7 +22,7 @@ function App() {
       {users
       .sort((u1,u2)=>u1.name.last.localeCompare(u2.name.last))
       .map((u,index)=>
-        <li key={index}>{u.name.last} {u.name.first} - {u.phone} <span className="star"> &#9734; </span></li>
+        <li key={index}>{u.name.last} {u.name.first} - {u.phone} <span className="star" onClick={(e)=>e.target.classList.toggle("active")} > &#9734; </span></li>
       )}
       </ul>
     </>

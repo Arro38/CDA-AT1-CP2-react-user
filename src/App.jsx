@@ -22,8 +22,14 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage users={users} />} />
-        <Route path="/favorites" element={<FavoritePage users={users} />} />
+        <Route
+          path="/"
+          element={<HomePage users={users} setUsers={setUsers} />}
+        />
+        <Route
+          path="/favorites"
+          element={<FavoritePage users={users} setUsers={setUsers} />}
+        />
       </Routes>
     </BrowserRouter>
   );

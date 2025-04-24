@@ -82,7 +82,7 @@ li {
 }
 
 .active {
-  color: yellow;
+  color: red;
 }
 
 .star.active:hover {
